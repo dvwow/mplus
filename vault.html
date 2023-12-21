@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style/keys.css">
+    </head>
+    <body>
+        <div id="vault-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">Vault</th>
+                        <th class="vault-slot">Slot 1</th>
+                        <th colspan="2"></th>
+                        <th class="vault-slot">Slot 2</th>
+                        <th colspan="3"></th>
+                        <th class="vault-slot">Slot 3</th>
+                    </tr>
+                    <tr>
+                        <th align="left" width="200px">Name</th>
+                        <th align="left" width="150px">Rating</th>
+                        <th class="vault-slot" width="100px">Key 1</th>
+                        <th width="100px">Key 2</th>
+                        <th width="100px">Key 3</th>
+                        <th class="vault-slot" width="100px">Key 4</th>
+                        <th width="100px">Key 5</th>
+                        <th width="100px">Key 6</th>
+                        <th width="100px">Key 7</th>
+                        <th class="vault-slot" width="100px">Key 8</th>
+                    </tr>
+                </thead>
+                <tbody id="vault_body"></tbody>
+            </table>
+        </div>
+        <script type="text/javascript" src="js/keys.js"></script>
+        <script type="text/javascript">
+            const table_data = document.getElementById("vault_body");
+            const region = 'us';
+            const realm = 'kelthuzad';
+            const characters = [
+                'Aegwyna',
+                'Bounded',
+                'Coachcurd',
+                'Darnkiller',
+                'Eylia',
+                'Feylia',
+                'Galithor',
+                'Garlicsalt',
+                'Guineasaurus',
+                'Hotmachine',
+                'Kazzel',
+                'Kisaki',
+                'Nezyc',
+                'Nezzedec',
+                'Papertiger',
+                'Rockytop',
+                'Toinz',
+                'Ünst',
+                'Zolf'
+            ];
+
+            getVault(characters);
+            
+            async function getVault(character_list) {              
+                for (const c of character_list) {
+                    let table_row = '';
+                    const vault_table = await getVaultKeys(region, realm, c);
+                    vault_table.keys.forEach((m, i) => {
+                        const row_class = (i == 0 || i == 3 || i == 7) ? 'vault-slot' : 'not-vault';
+                        table_row += '<td class="' + row_class + '">' + m.short_name + ' ' + m.mythic_level + ' [+' + m.num_keystone_upgrades + ']</td>';
+                    });
+                    table_data.innerHTML += '<tr><td><a href="https://raider.io/characters/' + region + '/' + realm + '/' + c + '">'
+                        + vault_table.name + '</a></td><td>' + vault_table.score + '</td>' + table_row + '</tr>';
+
+                };
+            }
+        </script>
+    </body>
+</html>
