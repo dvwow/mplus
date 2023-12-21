@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="css/keys.css">
+        <link rel="stylesheet" href="style/keys.css">
     </head>
     <body>
         <div id="vault-body">
@@ -35,32 +35,13 @@
             const table_data = document.getElementById("vault_body");
             const region = 'us';
             const realm = 'kelthuzad';
-            const characters = [
-                'Aegwyna',
-                'Bounded',
-                'Coachcurd',
-                'Darnkiller',
-                'Eylia',
-                'Feylia',
-                'Galithor',
-                'Garlicsalt',
-                'Guineasaurus',
-                'Hotmachine',
-                'Kazzel',
-                'Kisaki',
-                'Nezyc',
-                'Nezzedec',
-                'Papertiger',
-                'Rockytop',
-                'Toinz',
-                'Ünst',
-                'Zolf'
-            ];
 
-            getVault(characters);
+            getVault();
             
-            async function getVault(character_list) {              
-                for (const c of character_list) {
+            async function getVault() {
+                const character_list = await fetch('characters.txt').then($ => $.text());
+                const characters = character_list.split('\n');
+                for (const c of characters) {
                     let table_row = '';
                     const vault_table = await getVaultKeys(region, realm, c);
                     vault_table.keys.forEach((m, i) => {
