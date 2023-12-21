@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="style/keys.css">
+    </head>
+    <body>
+        <div id="portal-body">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="10">Portals</th>
+                    </tr>
+                    <tr>
+                        <th align="left" width="200px">Name</th>
+                        <th align="left" width="150px">Rating</th>
+                        <th width="100px">AD</th>
+                        <th width="100px">BRH</th>
+                        <th width="100px">DHT</th>
+                        <th width="100px">EB</th>
+                        <th width="100px">FALL</th>
+                        <th width="100px">RISE</th>
+                        <th width="100px">TOTT</th>
+                        <th width="100px">WM</th>
+                    </tr>
+                </thead>
+                <tbody id="portal_body"></tbody>
+            </table>
+        </div>
+        <script type="text/javascript" src="js/keys.js"></script>
+        <script type="text/javascript">
+            const table_data = document.getElementById("portal_body");
+            const region = 'us';
+            const realm = 'kelthuzad';
+
+            getPortals();
+            
+            async function getPortals() {
+                const character_list = await fetch('characters.txt').then($ => $.text());
+                const characters = character_list.trim().split('\n');
+                for (const c of characters) {
+                    let table_row = '';
+                    const portal_table = await getBestKeys(region, realm, c);
+                    portal_table.keys.sort((a, b) => ('' + a.short_name).localeCompare(b.short_name)).forEach((m, i) => {
+                        const run_class = (m.mythic_level >= 20 && m.num_keystone_upgrades > 0) ? 'portal_yes' : 'portal_no';
+                        table_row += '<td class="' + run_class + '">' + m.short_name + ' ' + m.mythic_level + ' [+' + m.num_keystone_upgrades + ']</td>';
+                    });
+                    table_data.innerHTML += '<tr><td><a href="https://raider.io/characters/' + region + '/' + realm + '/' + c + '">'
+                        + portal_table.name + '</a></td><td>' + portal_table.score + '</td>' + table_row + '</tr>';
+
+                };
+            }
+        </script>
+    </body>
+</html>
