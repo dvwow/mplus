@@ -33,11 +33,27 @@ async function getVaultKeys(region, realm, character) {
         + '&fields=mythic_plus_scores_by_season:current%2Cmythic_plus_weekly_highest_level_runs';
 
     const data = await callAPI(api, character_params)
-    let character_row = '<td>' + data.name + '</td><td>' + data.mythic_plus_scores_by_season[0].all + '</td>';
     return {
         name: data.name,
         score: data.mythic_plus_scores_by_season[0].scores.all,
         keys: data.mythic_plus_weekly_highest_level_runs.slice(0,8)
+    };
+}
+
+async function getBestKeys(region, realm, character) {
+    let vault_data = {};
+    const api = '/api/v1/characters/profile';
+    const character_params =
+        'region=' + region
+        + '&realm='+ realm
+        + '&name=' + character
+        + '&fields=mythic_plus_scores_by_season:current%2Cmythic_plus_best_runs:all';
+
+    const data = await callAPI(api, character_params)
+    return {
+        name: data.name,
+        score: data.mythic_plus_scores_by_season[0].scores.all,
+        keys: data.mythic_plus_best_runs
     };
 }
 
