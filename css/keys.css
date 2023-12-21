@@ -1,0 +1,13 @@
+a {
+    color: white;
+}
+
+body {
+    background-color:black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.vault-slot {
+    background-color: darkslategrey;
+}
