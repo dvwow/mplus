@@ -41,7 +41,7 @@
                     let table_row = '';
                     const portal_table = await getBestKeys(region, realm, c);
                     portal_table.keys.sort((a, b) => ('' + a.short_name).localeCompare(b.short_name)).forEach((m, i) => {
-                        const run_class = (m.mythic_level >= 20 && m.num_keystone_upgrades > 0) ? 'portal_yes' : 'portal_no';
+                        const run_class = (m.mythic_level >= 10 && m.num_keystone_upgrades > 0) ? 'portal_yes' : 'portal_no';
                         table_row += '<td class="' + run_class + '">' + m.short_name + ' ' + m.mythic_level + ' [+' + m.num_keystone_upgrades + ']</td>';
                     });
                     table_data.innerHTML += '<tr><td><a href="https://raider.io/characters/' + region + '/' + realm + '/' + c + '">'
