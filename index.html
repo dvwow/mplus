@@ -44,12 +44,15 @@
                 const characters = character_list.split('\n');
                 for (const c of characters) {
                     let table_row = '';
-                    const vault_table = await getVaultKeys(region, realm, c);
+                    const char_details = c.split('-');
+                    const character = char_details[0];
+                    const realm = char_details[1] ? char_details[1] : default_realm;
+                    const vault_table = await getVaultKeys(region, realm, character);
                     vault_table.keys.forEach((m, i) => {
                         const row_class = (i == 0 || i == 3 || i == 7) ? 'vault-slot' : 'not-vault';
                         table_row += '<td class="' + row_class + '">' + m.short_name + ' ' + m.mythic_level + ' [+' + m.num_keystone_upgrades + ']</td>';
                     });
-                    table_data.innerHTML += '<tr><td><a href="https://raider.io/characters/' + region + '/' + realm + '/' + c + '">'
+                    table_data.innerHTML += '<tr><td><a href="https://raider.io/characters/' + region + '/' + realm + '/' + character + '">'
                         + vault_table.name + '</a></td><td>' + vault_table.score + '</td>' + table_row + '</tr>';
 
                 };
