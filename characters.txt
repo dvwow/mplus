@@ -1,12 +1,12 @@
+Akuma
 Aegwyna
-Bounded
 Coachcurd
 Darnkiller
 Eylia
-Fairy
+Faith
 Feylia
 Galithor
-Garlicsalt
+Gonwa
 Guineasaurus
 Hibernal
 Hotmachine
@@ -15,8 +15,7 @@ Kisaki
 Nezyc
 Nezzedec
 Papertiger
-Pounded
 Rockytop
+Rukelost
 Toinz
-Ünst
 Zolf
