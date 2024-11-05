@@ -5,6 +5,7 @@ Bounded-MoonGuard
 Coachcurd
 Darnkiller
 Eylia
+Failia
 Faith
 Feylia
 Frostyszn
