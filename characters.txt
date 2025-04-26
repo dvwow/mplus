@@ -5,6 +5,7 @@ Coachcurd
 Cyzen
 Darnkiller
 Doach
+Eylia
 Failia
 Feylia
 Flan
