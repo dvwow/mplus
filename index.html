@@ -44,7 +44,7 @@
                 const characters = character_list.split('\n');
                 for (const c of characters) {
                     let table_row = '';
-                    const char_details = c.split('-');
+                    const char_details = c.split(':');
                     const character = char_details[0];
                     const realm = char_details[1] ? char_details[1] : default_realm;
                     const vault_table = await getVaultKeys(region, realm, character);
