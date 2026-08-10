@@ -39,7 +39,7 @@
                 const characters = character_list.trim().split('\n');
                 for (const c of characters) {
                     let table_row = '';
-                    const char_details = c.split('-');
+                    const char_details = c.split(':');
                     const character = char_details[0];
                     const realm = char_details[1] ? char_details[1] : default_realm;
                     const portal_table = await getBestKeys(region, realm, character);
