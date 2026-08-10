@@ -1,12 +1,12 @@
 Akuma
-Bounded-MoonGuard
-Bodok-Argent-Dawn
+Bounded:MoonGuard
+Bodok:Argent-Dawn
 Coachcurd
 Darnkiller
 Eylia
 Feylia
 Frostyszn
-Fsbloop-Illidan
+Fsbloop:Illidan
 Galithor
 Guineasaurus
 Hibernal
@@ -15,7 +15,7 @@ Kallexi
 Kazzel
 Kisaki
 Komada
-Mandymóò-Bleeding-Hollow
+Mandymóò:Bleeding-Hollow
 Nezzedec
 Papertiger
 Rockytop
