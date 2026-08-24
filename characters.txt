@@ -1,8 +1,8 @@
 Akuma
 Bounded:MoonGuard
-Bodok:Argent-Dawn
 Coachcurd
 Darnkiller
+Deathbodach:Bleeding-Hollow
 Eylia
 Feylia
 Frostyszn
